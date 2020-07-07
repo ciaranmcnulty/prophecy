@@ -22,12 +22,13 @@ matrix:
     - php: 7.4
       dist: bionic
     - php: nightly
-      env: COMPOSER_FLAGS='--ignore-platform-reqs'
+      env: COMPOSER_FLAGS='--ignore-platform-req=php'
   fast_finish: true
   allow_failures:
     - php: nightly
 
 install:
+  - composer selfupdate --preview
   - export COMPOSER_ROOT_VERSION=dev-master
   - composer update $COMPOSER_FLAGS
 
